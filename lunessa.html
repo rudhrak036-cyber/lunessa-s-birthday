@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Lunessa ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#0f172a,#1e293b,#312e81);
+    min-height:100vh;
+    overflow-x:hidden;
+    color:white;
+}
+
+.container{
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.card{
+    max-width:800px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 0 40px rgba(255,255,255,0.1);
+    animation:fadeIn 2s ease;
+}
+
+h1{
+    font-size:2.4rem;
+    margin-bottom:15px;
+    color:#fff;
+    text-shadow:0 0 20px #d8b4fe;
+}
+
+.subtitle{
+    font-size:1.2rem;
+    color:#e9d5ff;
+    margin-bottom:25px;
+}
+
+.message{
+    text-align:left;
+    line-height:1.9;
+    font-size:1rem;
+    color:#f8fafc;
+}
+
+.signature{
+    margin-top:25px;
+    text-align:center;
+    font-size:1.1rem;
+    color:#fbcfe8;
+}
+
+.moon{
+    font-size:70px;
+    animation:float 3s ease-in-out infinite;
+    margin-bottom:15px;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+canvas{
+    position:fixed;
+    top:0;
+    left:0;
+    pointer-events:none;
+    z-index:999;
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:2rem;
+    }
+
+    .card{
+        padding:22px;
+    }
+
+    .message{
+        font-size:0.95rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="container">
+    <div class="card">
+
+        <div class="moon">🌙✨</div>
+
+        <h1>Happy Birthday, Lunessa 🎂❤️</h1>
+
+        <div class="subtitle">
+            A special day for a special girl
+        </div>
+
+        <div class="message">
+
+            <p>
+            Today is about you, and before anything else, I hope you take a moment to realize how special you truly are.
+            </p>
+
+            <br>
+
+            <p>
+            You have this strange, beautiful way of leaving pieces of yourself in people's hearts without even trying. Your laughter, your stubbornness, your intelligence, your kindness, the way you care more than you admit, and even the way your mind wanders through a thousand thoughts at once—every part of you is uniquely yours, and that's something worth celebrating.
+            </p>
+
+            <br>
+
+            <p>
+            I genuinely hope this year brings you peace where you've known stress, confidence where you've known doubt, and happiness that stays longer than just a moment. I hope you achieve the things you've been working so hard for, discover new reasons to smile, and find yourself surrounded by people who appreciate you as deeply as you deserve.
+            </p>
+
+            <br>
+
+            <p>
+            No matter where life takes us, I will always be grateful that I got the chance to know someone like you. You've made ordinary days feel meaningful in ways you'll probably never fully understand.
+            </p>
+
+            <br>
+
+            <p>
+            So today, be selfish with your happiness. Eat your favorite food, smile a little more, laugh a little louder, and allow yourself to feel celebrated.
+            </p>
+
+            <br>
+
+            <p>
+            May this new chapter of your life be kinder, brighter, and more beautiful than the last.
+            </p>
+
+            <br>
+
+            <p>
+            Happy Birthday once again. 🤍🎂
+            </p>
+
+        </div>
+
+        <div class="signature">
+            Made with ❤️ for Lunessa
+        </div>
+
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const confetti = [];
+
+for(let i=0;i<180;i++){
+    confetti.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height-canvas.height,
+        r:Math.random()*6+2,
+        d:Math.random()*180,
+        color:`hsl(${Math.random()*360},100%,70%)`,
+        tilt:Math.random()*10-10
+    });
+}
+
+function draw(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    confetti.forEach(c=>{
+        ctx.beginPath();
+        ctx.fillStyle=c.color;
+        ctx.fillRect(c.x,c.y,c.r,c.r*2);
+    });
+
+    update();
+}
+
+function update(){
+    confetti.forEach(c=>{
+        c.y += 2 + c.r/2;
+        c.x += Math.sin(c.d);
+
+        if(c.y > canvas.height){
+            c.y = -20;
+            c.x = Math.random()*canvas.width;
+        }
+    });
+}
+
+setInterval(draw,20);
+
+window.addEventListener('resize',()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+</script>
+
+</body>
+</html>
